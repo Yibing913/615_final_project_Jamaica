@@ -208,7 +208,7 @@ ui <- navbarPage(
           width = 7,
           wellPanel(
             tags$h3("Historical Population Trends"),
-            tags$p("Using historical data from 1990 to present, we visualize Jamaican population changes and project forward. A secondary chart compares male/female population data between selected years for deeper gender-based analysis.", 
+            tags$p("Using historical data from 1990 to present, I visualize Jamaican population changes and project forward. A secondary chart compares male/female population data between selected years for deeper gender-based analysis.", 
                    style = "font-size: 18px;")
           ),
           wellPanel(
@@ -399,11 +399,10 @@ ui <- navbarPage(
     ),
     align = "right",
     tabPanel(tags$a(href="https://en.wikipedia.org/wiki/Jamaica", "Wikipedia: Jamaica")),
-    tabPanel(tags$a(href="https://www.shinyapps.io/", "shinyapps.io for publishing")),
-    tabPanel(tags$a(href="https://statinja.gov.jm/", "Statistical Institute of Jamaica (STATIN)")),
-    tabPanel(tags$a(href="https://data.un.org/", "UN Data")),
-    tabPanel(tags$a(href="https://www.worldbank.org/en/country/jamaica", "World Bank Data")),
-    tabPanel(tags$a(href="https://climatedata.imf.org/pages/country-data", "IMF Climate Data"))
+    tabPanel(tags$a(href="https://www.naturalearthdata.com/downloads/10m-cultural-vectors/", "Natural Earth")),
+    tabPanel(tags$a(href="https://worldpopulationreview.com/cities/jamaica", "World Population Review")),
+    tabPanel(tags$a(href="https://data.worldbank.org/country/jamaica", "World Bank Data")),
+    tabPanel(tags$a(href="https://gadm.org/download_country.html", "GADM"))
   )
 )
 
