@@ -1,0 +1,12 @@
+name: Jamaica_Shiny_App
+title: jamaica_shiny_app
+username: yibwang
+account: yibwang
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13608800
+bundleId: 9531174
+url: https://yibwang.shinyapps.io/Jamaica_Shiny_App/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
