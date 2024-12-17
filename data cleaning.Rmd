@@ -1,0 +1,85 @@
+---
+title: "data cleaning"
+author: "Yibing Wang"
+date: "2024-12-16"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyr)
+library(dplyr)
+library(readr)
+
+female_data <- read_csv("female population.csv") 
+
+female_data <- female_data %>%
+  pivot_longer(
+    cols = starts_with("19") | starts_with("20"),
+    names_to = "Year",
+    values_to = "Female"
+  )
+
+female_data <- female_data %>%
+  mutate(Year = as.numeric(gsub(".*\\[YR(\\d{4})\\]", "\\1", Year))) %>% 
+  drop_na(Year, Female) 
+
+female_data <- female_data %>%
+  select(-`Series Code`, -`Country Name`, -`Country Code`,-`Series Name`)
+
+print(female_data)
+```
+
+```{r}
+male_data <- read_csv("male population.csv") 
+
+male_data<- male_data %>%
+  pivot_longer(
+    cols = starts_with("19") | starts_with("20"),
+    names_to = "Year",
+    values_to = "Male"
+  )
+
+male_data <- male_data %>%
+  mutate(Year = as.numeric(gsub(".*\\[YR(\\d{4})\\]", "\\1", Year))) %>% 
+  drop_na(Year, Male) 
+
+male_data <- male_data %>%
+  select(-`Series Code`, -`Country Name`, -`Country Code`,-`Series Name`)
+
+print(male_data)
+```
+```{r}
+combined_data <- full_join(female_data, male_data, by = "Year")
+print(combined_data)
+```
+
+```{r}
+write_csv(combined_data, "gender_population.csv")
+```
+
+```{r}
+jamaica_population <- read_csv("population.csv") 
+
+jamaica_population<- jamaica_population %>%
+  pivot_longer(
+    cols = starts_with("19") | starts_with("20"),
+    names_to = "Year",
+    values_to = "Population"
+  )
+
+jamaica_population <- jamaica_population %>%
+  mutate(Year = as.numeric(gsub(".*\\[YR(\\d{4})\\]", "\\1", Year))) %>% 
+  drop_na(Year, Population) 
+
+jamaica_population <- jamaica_population %>%
+  select(-`Series Code`, -`Country Name`, -`Country Code`,-`Series Name`)
+
+print(jamaica_population)
+
+write_csv(jamaica_population, "jamaica_population.csv")
+```
+
